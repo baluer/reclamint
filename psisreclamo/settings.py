@@ -11,33 +11,24 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-from dotenv import load_dotenv
-
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-load_dotenv(os.path.join(BASE_DIR, ".env"))
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = 'jb6juc2yo4@=6fy6it5f$kq+7=fwe@vov$i3my2ud6zg@5dv_l'
-SECRET_KEY = os.getenv("SECRET_KEY")
-
+SECRET_KEY = 'jb6juc2yo4@=6fy6it5f$kq+7=fwe@vov$i3my2ud6zg@5dv_l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-#DEBUG = False  # ojo en produccion false
-DEBUG = True   # ojo en desarrollo true
+DEBUG = False  # ojo en produccion false
+#DEBUG = True   # ojo en desarrollo true
 
 
-ALLOWED_HOSTS = ['*','django-server-production-68e0.up.railway.app','127.0.0.1',]
-
-#ALLOWED_HOSTS = ['*']                 
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -95,12 +86,10 @@ from decouple import config
 
 # lo desmarco para hacer nuevas migraciones y luego lo asterisqueo
 
-#'ENGINE': 'django.db.backends.postgresql_psycopg2',
-
 #""" desarrollo
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 #         'NAME': 'BASRECLAM',
 #         'USER': 'postgres',
 #         'PASSWORD': 'luma7078',
@@ -109,32 +98,14 @@ from decouple import config
 #     }
 # }
 
-#""" desarrollo
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'vfXwcDINvJEFuohiQPZE',
-        'HOST': 'containers-us-west-95.railway.app',
-        'DATABASE_PORT': '7335',
-    }
-}
-
-
-
-#DATABASE_URL=postgresql://${{ postgres }}:${{ s0KLuu6OqlpgJWzvqyLg }}@${{ containers-us-west-60.railway.app }}:${{ 7974 }}/${{ railway }}
-#DATABASE_URL=postgresql://postgres:s0KLuu6OqlpgJWzvqyLg@containers-us-west-60.railway.app:7974/railway
-#DATABASE_URL=postgresql://postgres:s0KLuu6OqlpgJWzvqyLg@containers-us-west-60.railway.app:7974/railway
 #"""
 
 # produccion
-# DATABASES = { 
-#    'default': dj_database_url.config(
-#       default=config('DATABASE_URL')
-#    )
-
-# }
+DATABASES = { 
+   'default': dj_database_url.config(
+      default=config('DATABASE_URL')
+   )
+}
 
 
 
