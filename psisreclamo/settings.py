@@ -24,8 +24,8 @@ SECRET_KEY = 'jb6juc2yo4@=6fy6it5f$kq+7=fwe@vov$i3my2ud6zg@5dv_l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = False  # ojo en produccion false
-#DEBUG = True   # ojo en desarrollo true
+#DEBUG = False  # ojo en produccion false
+DEBUG = True   # ojo en desarrollo true
 
 
 ALLOWED_HOSTS = ['*']
@@ -89,24 +89,30 @@ from decouple import config
 #""" desarrollo
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'BASRECLAM',
-#         'USER': 'postgres',
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'baluer$psisreclamo',
+#         'USER': 'baluer',
 #         'PASSWORD': 'luma7078',
-#         'HOST': '127.0.0.1',
-#         'DATABASE_PORT': '5432',
+#         'HOST': 'baluer.mysql.pythonanywhere-services.com',
+#         'DATABASE_PORT': '3306',
 #     }
 # }
 
 #"""
 
 # produccion
-DATABASES = { 
-   'default': dj_database_url.config(
-      default=config('DATABASE_URL')
-   )
-}
+# DATABASES = { 
+#    'default': dj_database_url.config(
+#       default=config('DATABASE_URL')
+#    )
+# }
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR , 'db.sqlite3'),
+    }
+}
 
 
 # Password validation
